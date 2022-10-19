@@ -2,7 +2,7 @@ USE base_consorcio
 
 --ejercicio 22
 /*Mostrar el promedio de gasto por tipo de gasto, solo para aquellos pertenecientes al 1er 
-semestre (períod del 1 al 6)*/
+semestre (perÃ­od del 1 al 6)*/
 
 select 
 	idTipoGasto as 'Tipo de Gasto', 
@@ -44,4 +44,25 @@ select
 	COUNT(idconserje) as 'Cantidad'
 from conserje
 group by estciv,DATEDIFF(YEAR,fechnac,getdate())
+order by estciv
+
+--CORRECCION DEL EJERCICIO 25
+select
+	estciv as 'Estado civil',
+	Edad = DATEDIFF(YEAR,fechnac,GETDATE())
+	-(CASE
+	WHEN DATEADD(YY,DATEDIFF(YEAR,fechnac,GETDATE()),fechnac)>GETDATE() THEN
+      	1
+	ELSE
+      	0 
+	END),	
+	COUNT(idconserje) as 'Cantidad'
+from conserje
+group by estciv,DATEDIFF(YEAR,fechnac,GETDATE())
+	-(CASE
+	WHEN DATEADD(YY,DATEDIFF(YEAR,fechnac,GETDATE()),fechnac)>GETDATE() THEN
+      	1
+	ELSE
+      	0 
+	END)
 order by estciv
