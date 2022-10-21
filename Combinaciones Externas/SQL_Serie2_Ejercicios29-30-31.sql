@@ -1,0 +1,7 @@
+--USE base_consorcio
+
+--Ejercicio 29
+/*Mostrar todas las provincias registradas. Para las que tengan consorcios mostrar a qué
+localidad pertenecen. Todos con sus nombres respectivos. Ordene los resultados por Provincia, 
+localidad y consorcio.*/SELECT 	p.descripcion AS 'Provincia',	l.descripcion AS 'Localidad',	c.nombre AS 'Consorcio'FROM provincia pLEFT JOIN consorcio c	ON p.idprovincia = c.idprovinciaLEFT JOIN localidad l	ON c.idlocalidad = l.idlocalidad AND c.idprovincia = l.idprovincia--Ejercicio 30/*Mostrar los nombres de todos los conserjes. Para los que están asignados a algún consorcio 
+mostrar también ese nombre. Ordene por apellido y nombre.Sabiendo que un conserje no puede estar asignado a más de un consorcio, la salida esperadaes 220 registros, ya que esa es la cantidad de conserjes, estén o no asignados a un consorcio.*/SELECT 	c.apeynom AS 'Apellido y Nombre', 	co.nombre AS 'Consorcio'FROM conserje cLEFT JOIN consorcio co	ON c.idconserje = co.idconserjeORDER BY c.apeynom--Ejercicio 31INSERT INTO consorcio(idprovincia,idlocalidad,idconsorcio,nombre,direccion,idzona,idconserje,idadmin)VALUES(1,1,2,'EDIFICIO-113','PARAGUAY N° 630',5,NULL,NULL)/*Mostrar los consorcios registrados, tengan o no tengan conserjes asignados.Corrección: La salida esperada es 101 registros, que es la cantidad de consorcios*/SELECT	c.apeynom AS 'Apellido y Nombre',	co.nombreFROM consorcio coLEFT JOIN conserje c	ON co.idconserje = c.idconserjeORDER BY c.apeynom 
