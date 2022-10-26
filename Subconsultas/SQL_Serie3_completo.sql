@@ -2,7 +2,7 @@ USE base_consorcio
 
 --Resolucion serie 3
 --Ejercicio 1
-/*Mostrar los datos de los consorcios (provincia, localidad, nombres, dirección y zona) que 
+/*Mostrar los datos de los consorcios (provincia, localidad, nombres, direcciÃ³n y zona) que 
 pertenezcan a las dos zonas con mayor cantidad de consorcios.
 (INNER + SUBCONSULTA)
 */
@@ -36,9 +36,9 @@ GROUP BY idzona
 ORDER BY COUNT(idconsorcio) DESC
  
 --Ejercicio 2
-/*Seleccionar los consorcios que pertenezcan a la provincia con mayor número de habitantes, y 
-mostrar los datos de los conserjes mayores a 50 años (ordenados de mayor a menor por edad) 
-que no estén asignados a estos consorcios
+/*Seleccionar los consorcios que pertenezcan a la provincia con mayor nÃºmero de habitantes, y 
+mostrar los datos de los conserjes mayores a 50 aÃ±os (ordenados de mayor a menor por edad) 
+que no estÃ©n asignados a estos consorcios
 (SUBCONSULTA + FUNCION DE FECHAS)
 */
 SELECT
@@ -72,7 +72,7 @@ ON ce.idconserje = co.idconserje
 		))
 ORDER BY Edad desc
 
---Consulta Conserjes que no están asignados a ningún consorcio
+--Consulta Conserjes que no estÃ¡n asignados a ningÃºn consorcio
 SELECT 
 	ce.apeynom AS 'Apellido y Nombre'
 FROM conserje ce
@@ -81,7 +81,7 @@ LEFT JOIN consorcio co
 WHERE co.idconserje IS NULL
 
 
---Consulta Provincia con mayor población
+--Consulta Provincia con mayor poblaciÃ³n
 SELECT TOP 1
 	idprovincia as 'ID Provincia',
 	descripcion as 'Nombre'
@@ -90,7 +90,7 @@ ORDER BY poblacion DESC
 
 --Ejercicio 3
 /*Mostrar todos los tipos de gastos, y sus respectivas descripciones, que no fueron registrados 
-en toda la provincia de Buenos Aires para el mes de febrero del año 2015
+en toda la provincia de Buenos Aires para el mes de febrero del aÃ±o 2015
  (SUBCONSULTA + FUNCION DE FECHAS)
 */
 SELECT DISTINCT
@@ -127,7 +127,7 @@ INNER JOIN localidad l
 	ON p.idprovincia = l.idprovincia
 	WHERE l.idprovincia IN (p.idprovincia)
 
-/*Modificando la condición del WHERE de la consulta anterior, obtenemos las provincias que 
+/*Modificando la condiciÃ³n del WHERE de la consulta anterior, obtenemos las provincias que 
 	no tienen localidades cargadas, en este caso es 0, ya que todas las provincias tienen al menos
 	una localidad cargada*/
 SELECT 
@@ -135,4 +135,4 @@ SELECT
 FROM provincia p
 INNER JOIN localidad l
 	ON p.idprovincia = l.idprovincia
-	WHERE l.idprovincia NOT IN (p.idprovincia)
+	WHERE l.idprovincia IS NULL
