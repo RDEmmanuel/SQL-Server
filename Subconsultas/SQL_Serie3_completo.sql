@@ -103,13 +103,13 @@ INNER JOIN provincia p
 	ON g.idprovincia = p.idprovincia
 	WHERE tg.idtipogasto NOT IN (
 		SELECT 
-			tg.idtipogasto AS 'Tipo Gasto'
+			tg.idtipogasto
 		FROM gasto g
 		INNER JOIN provincia p 
 			ON g.idprovincia = p.idprovincia
 		INNER JOIN tipogasto tg
 			ON g.idtipogasto = tg.idtipogasto
-		WHERE (YEAR(g.fechapago)=2015 AND MONTH(g.fechapago)=2 AND p.descripcion = 'Buenos Aires')
+		WHERE (YEAR(g.fechapago)=2015 AND MONTH(g.fechapago)=2 AND p.descripcion like 'buenos aires')
 	)
 
 --Ejercicio 4
