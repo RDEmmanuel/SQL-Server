@@ -57,7 +57,7 @@ LEFT JOIN consorcio co
 			FROM provincia 
 			ORDER BY poblacion DESC
 		))
-ORDER BY dbo.Edad(ce.fechnac) DESC
+ORDER BY Edad DESC
 
 --Alternativa ejercicio 2
 SELECT ce.idconserje,ce.apeynom,ce.tel,ce.fechnac,ce.estciv, dbo.Edad(ce.fechnac) AS [Edad]
@@ -68,9 +68,9 @@ ON ce.idconserje = co.idconserje
 	co.idprovincia != 
 		(
 			SELECT TOP 1 idprovincia from provincia
-			order by poblacion desc
+			ORDER BY poblacion DESC
 		))
-ORDER BY Edad desc
+ORDER BY Edad DESC
 
 --Consulta Conserjes que no están asignados a ningún consorcio
 SELECT 
