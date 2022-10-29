@@ -94,6 +94,7 @@ en toda la provincia de Buenos Aires para el mes de febrero del año 2015
  (SUBCONSULTA + FUNCION DE FECHAS)
 */
 SELECT DISTINCT
+	tg.idtipogasto as 'ID Tipo Gasto',
 	tg.descripcion as 'Tipo gasto'						
 FROM gasto g
 INNER JOIN tipogasto tg
