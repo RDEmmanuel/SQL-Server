@@ -12,7 +12,7 @@ INNER JOIN consorcio c
 
 	  
 --Ejercicio 4
-/*Mostrar los administradores con consorcios que estén por debajo del promedio de 
+/*Mostrar los administradores con consorcios que estÃ©n por debajo del promedio de 
 	edad solo de los administradores asignados a estos consorcios..
 	Se utiliza la funcion edad definida previamente.
 */
@@ -20,7 +20,7 @@ SELECT
 	a.idadmin as 'ID Admin',
 	a.apeynom as 'Apellido y Nombre',
 	dbo.Edad(a.fechnac) as 'Edad',
-	a.tel as 'Teléfono',
+	a.tel as 'TelÃ©fono',
 	a.sexo as 'Sexo'
 FROM administrador a
 INNER JOIN consorcio c
@@ -28,7 +28,5 @@ INNER JOIN consorcio c
 	WHERE dbo.Edad(a.fechnac) < 
 	(
 		SELECT AVG(dbo.Edad(a.fechnac)) FROM administrador a		
-		INNER JOIN consorcio c
-			ON c.idadmin = a.idadmin
 	)
 ORDER BY Edad DESC
