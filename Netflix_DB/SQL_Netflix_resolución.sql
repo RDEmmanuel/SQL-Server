@@ -117,17 +117,6 @@ WHERE d.id NOT IN (SELECT DISTINCT td.id_director
 ORDER BY 1
 
 
---directores que tienen peliculas (type_movie = 1)
-SELECT DISTINCT
-	td.id_director
-FROM title_director td
-INNER JOIN titles t 
-	ON td.id_title = t.id
-WHERE t.id_type_movie = 1
-
-
-
-
 /*	Devuelve los primeros 3 carácteres de la cadena que recibe como parámetro	*/
 SELECT LEFT(duration,3) FROM titles WHERE titles.id_type_movie = 1
 
